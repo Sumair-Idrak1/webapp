@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  webapp:
+    build: ./app
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app  # For development hot-reloading
+    environment:
+      - FLASK_ENV=development
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - webapp
