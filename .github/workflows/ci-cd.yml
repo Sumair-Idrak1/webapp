@@ -17,11 +17,11 @@ jobs:
       - name: Build and test
         run: |
           docker-compose -f docker-compose.yml build
-          docker-compose -f docker-compose.yml run webapp python -m pytest  # Add tests later
+          docker-compose -f docker-compose.yml run webapp python -m pytest
 
-      # Use appleboy/ssh-action@v0.1.15 (latest version as of 2023)
+      # Use the latest version of appleboy/ssh-action
       - name: Deploy to Server
-        uses: appleboy/ssh-action@v0.1.15
+        uses: appleboy/ssh-action@v0.4.0  # Latest version as of 2024
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
